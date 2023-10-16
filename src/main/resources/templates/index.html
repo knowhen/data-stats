@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>数据统计</title>
+        <style>
+        /* 添加自定义样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        #sidebar {
+            width: 20%;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #statistics {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="sidebar">
+                <h2>数据统计</h2>
+                <ul>
+                    <li><a href="#">销量/天</a></li>
+                    <li><a href="#">维度2</a></li>
+                    <li><a href="#">维度3</a></li>
+                    <!-- 在这里添加更多的维度选项 -->
+                </ul>
+            </div>
+            <div id="content">
+                <div id="statistics">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>小计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="sale : ${sales}">
+                                <td th:text="${sale.name}">水票</td>
+                                <td th:text="${sale.price}">8.00</td>
+                                <td th:text="${sale.quantity}">0</td>
+                                <td th:text="${sale.amount}">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="main" style="width: 600px;height:400px;"></div>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+      var xAxisData = [[${xAxisData}]];
+      var seriesData = [[${seriesData}]];
+      // 基于准备好的dom，初始化echarts实例
+      var histogram = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+          text: '销量统计'
+        },
+        tooltip: {},
+        legend: {
+          data: ['销量']
+        },
+        xAxis: {
+          data: xAxisData
+        },
+        yAxis: {
+        },
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: seriesData
+          }
+        ]
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      histogram.setOption(option);
+    </script>
+
+</html>

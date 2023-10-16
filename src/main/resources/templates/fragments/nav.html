@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>导航栏模板</title>
+        <link rel="stylesheet" href="/css/nav.css">
+    </head>
+    <body>
+        <nav th:fragment="nav">
+            <div th:each="nav : ${navs}" class="nav-flex">
+                <a th:text="${nav.name}" th:href="${nav.permalink}">导航</a>
+            </div>
+        </nav>
+
+        <ul th:fragment="sidebar" class="z-0 col-span-1 hidden h-full flex-col gap-6 sm:flex">
+            <li th:each="nav : ${navs}">
+                <a th:text="${nav.name}" th:href="${nav.permalink}">菜单</a>
+            </li>
+        </ul>
+    </body>
+</html>

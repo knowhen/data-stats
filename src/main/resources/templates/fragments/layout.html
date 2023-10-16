@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="https://www.thymeleaf.org" th:fragment="html (head,content)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+
+    <title th:text="${site.title}"></title>
+
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/nav.css" />
+
+    <th:block th:if="${head != null}">
+      <th:block th:replace="${head}" />
+    </th:block>
+
+  </head>
+  <body>
+    <nav th:replace="/fragments/nav :: nav"/>
+
+    <div id="container" class="container">
+      <section id="sidebar" class="sidebar">
+        <div th:replace="/fragments/nav :: sidebar" />
+      </section>
+
+      <section id="content" class="content">
+        <th:block th:replace="${content}" />
+      </section>
+    </div>
+
+    <footer th:replace="fragments/footer :: footer" />
+
+  </body>
+</html>

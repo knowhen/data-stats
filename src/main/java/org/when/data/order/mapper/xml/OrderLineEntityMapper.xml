@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.trade.mapper.OrderLineEntityMapper">
+<!--	<insert id="batchInsert" parameterType="java.util.List">-->
+<!--		INSERT INTO sias_order_line-->
+<!--		(id, order_id, product_id, product_name, quantity, price, total_price, create_by, create_time, update_by, update_time)-->
+<!--		values-->
+<!--		<foreach collection="list" item="item" separator=",">-->
+<!--			(#{item.id}, #{item.orderId}, #{item.productId}, #{item.productName}, #{item.quantity}, #{item.price}, #{item.totalPrice},-->
+<!--			#{item.createBy}, #{item.createTime}, #{item.updateBy}, #{item.updateTime})-->
+<!--		</foreach>-->
+<!--	</insert>-->
+
+	<delete id="deleteByMainId" parameterType="java.lang.String">
+		DELETE 
+		FROM  sias_order_line 
+		WHERE
+			 order_id = #{mainId} 	</delete>
+	
+	<select id="selectByMainId" parameterType="java.lang.String" resultType="org.when.ticket.checking.order.entity.OrderLineEntity">
+		SELECT * 
+		FROM  sias_order_line
+		WHERE
+			 order_id = #{mainId} 	</select>
+</mapper>

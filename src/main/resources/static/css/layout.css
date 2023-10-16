@@ -1,0 +1,58 @@
+/* 设置导航栏居中显示 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+nav {
+    text-align: center;
+    background-color: #333; /* 设置导航栏背景颜色 */
+    color: #fff; /* 设置文字颜色 */
+    padding: 10px 0; /* 设置内边距 */
+}
+
+/* 设置容器为flex布局，使左侧为导航菜单，右侧为列表展示区域 */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* 导航栏居中显示 */
+}
+
+/* 设置左侧侧边栏的样式 */
+.sidebar {
+    width: 20%;
+    background-color: #f0f0f0;
+    color: #fff;
+    padding: 20px;
+}
+
+/* 设置右侧内容区域的样式 */
+.content {
+    flex: 3; /* 占据剩余的空间 */
+    background-color: #fff; /* 设置内容区域背景颜色 */
+    padding: 20px; /* 设置内边距 */
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 设置页脚的样式，可以根据需要自定义 */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}

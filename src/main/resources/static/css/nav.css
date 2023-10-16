@@ -1,0 +1,13 @@
+.nav-flex {
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.nav-flex a {
+    text-decoration: none;
+    background-color: #333; /* 背景色 */
+    color: #fff; /* 文本颜色 */
+    padding: 5px 10px; /* 可根据需要调整内边距 */
+}
