@@ -14,6 +14,8 @@ public interface OrderStatsService {
 
     OrderStatsFormVO monthlyStats(YearMonth month);
 
+    OrderStatsFormVO yearlyStats(Year year);
+
     OrderStatsChartVO yearlyStats(Year year, OrderType orderType);
 
 }

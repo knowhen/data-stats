@@ -1,0 +1,23 @@
+/* 适应小屏幕设备（示例） */
+@media (max-width: 768px) {
+    .form-container, .chart-container {
+        width: 100%; /* 全宽度显示 */
+        float: none; /* 清除浮动 */
+        margin: 0; /* 清除边距 */
+    }
+}
+/* 调整表格容器样式 */
+.form-container {
+    width: 50%; /* 表格容器宽度 */
+    float: left; /* 让表格容器浮动到左侧 */
+    margin-right: 10px; /* 可选，设置表格容器的右边距 */
+}
+
+/* 调整图表容器样式 */
+.chart-container {
+    width: 50%; /* 图表容器宽度 */
+    height: 400px;
+    float: left; /* 让图表容器浮动到右侧 */
+    margin-top: 10px;
+    /* 可选，设置图表容器的其他样式，例如背景颜色、边框等 */
+}

@@ -61,6 +61,14 @@ public class OrderStatsServiceImpl implements OrderStatsService {
         return convertToStatsVO(sales);
     }
 
+    @Override
+    public OrderStatsFormVO yearlyStats(Year year) {
+        LocalDateTime startTime = getStartTime(year.atDay(1));
+        LocalDateTime endTime = getEndTime(LocalDate.of(year.getValue(), Month.DECEMBER, 31));
+        List<SalesVO> sales = statsSalesBetween(startTime, endTime);
+        return convertToStatsVO(sales);
+    }
+
     public OrderStatsFormVO monthlyStats(YearMonth month, OrderType orderType) {
         LocalDateTime startTime = getStartTime(month.atDay(1));
         LocalDateTime endTime = getEndTime(month.atEndOfMonth());

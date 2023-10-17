@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html
         xmlns:th="https://www.thymeleaf.org"
-        th:replace="~{fragments/layout :: html(head = null,content = ~{::content})}"
+        th:replace="~{fragments/layout :: html(head = ~{::head},content = ~{::content})}"
 >
-
+  <head th:fragment="head">
+    <link rel="stylesheet" href="/css/stats.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="/js/echarts-scripts.js"></script>
+    <script th:inline="javascript">
+      var xAxisData = [[${xAxisData}]];
+      var seriesData = [[${seriesData}]];
+    </script>
+  </head>
   <body>
 
     <section th:fragment="content" id="content" class="content">
 
-      <!-- 列表 -->
-      <article th:each="article : ${articles}">
-        <h2 th:text="${article.title}">标题</h2>
-        <p th:text="${article.content}">内容</p>
-      </article>
+      <div id="form" class="form-container">
+        <table border="1">
+          <h3>销量统计</h3>
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>单价</th>
+              <th>数量</th>
+              <th>小计</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="sale : ${sales}">
+              <td th:text="${sale.name}">水票</td>
+              <td th:text="${sale.price}">8.00</td>
+              <td th:text="${sale.quantity}">0</td>
+              <td th:text="${sale.amount}">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="histogram" class="chart-container">
+      </div>
 
     </section>
 
   </body>
+
 </html>

@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Navigation {
+    private Integer id;
     private String name;
     private String permalink;
 }

@@ -13,7 +13,7 @@
         </nav>
 
         <ul th:fragment="sidebar" class="z-0 col-span-1 hidden h-full flex-col gap-6 sm:flex">
-            <li th:each="nav : ${navs}">
+            <li th:each="nav : ${sidebar}">
                 <a th:text="${nav.name}" th:href="${nav.permalink}">菜单</a>
             </li>
         </ul>
