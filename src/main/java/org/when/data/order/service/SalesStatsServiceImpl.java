@@ -28,7 +28,7 @@ public class SalesStatsServiceImpl implements SalesStatsService {
 
     @Override
     public List<SalesVO> statsSalesBetween(LocalDateTime startTime, LocalDateTime endTime) {
-        Map<Integer, BundleEntity> bundleMap = bundleRepository.findEnabledBundleMap();
+        Map<Integer, BundleEntity> bundleMap = bundleRepository.findAllMap();
         Map<Integer, List<OrderEntity>> bundleOrderMap = orderRepository.findCompletedBundleOrderMapBetween(startTime, endTime, bundleMap.keySet());
 
         List<SalesVO> bundleSales = bundleMap.values().stream()

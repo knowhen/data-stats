@@ -98,4 +98,26 @@ public class StatsController {
 //        model.addAttribute("salesMap", salesMap);
         return "stats";
     }
+
+    @GetMapping("/bundle")
+    public String bundleSalesStats(Model model) {
+        List<SalesVO> bundleSales = statsBundleSales();
+        model.addAttribute("stats", bundleSales);
+        return "bundle";
+    }
+
+    private List<SalesVO> statsBundleSales() {
+        return service.bundleSalesStats();
+    }
+
+    @GetMapping("/product")
+    public String productSalesStats(Model model) {
+        List<SalesVO> bundleSales = statsProductSales();
+        model.addAttribute("stats", bundleSales);
+        return "product";
+    }
+
+    private List<SalesVO> statsProductSales() {
+        return service.productSalesStats();
+    }
 }

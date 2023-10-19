@@ -24,6 +24,12 @@ public class BundleRepository {
                 .collect(toMap(BundleEntity::getId, Function.identity()));
     }
 
+    public Map<Integer, BundleEntity> findAllMap() {
+        return bundleMapper.selectList(Wrappers.emptyWrapper())
+                .stream()
+                .collect(toMap(BundleEntity::getId, Function.identity()));
+    }
+
     public BundleEntity findById(Integer id) {
         return bundleMapper.selectById(id);
     }

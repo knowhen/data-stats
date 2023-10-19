@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:fragment="head">
+    <title>套餐销量</title>
+    <link rel="stylesheet" href="/css/stats.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="/js/sales.js"></script>
+    <script th:inline="javascript">
+      var stats = [[${stats}]];
+    </script>
+  </head>
+  <body>
+    <section th:fragment="content" id="content" class="content">
+      <div id="histogram" class="chart-container"></div>
+    </section>
+  </body>
+</html>

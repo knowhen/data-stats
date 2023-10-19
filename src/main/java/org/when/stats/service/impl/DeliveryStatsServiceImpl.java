@@ -85,6 +85,17 @@ public class DeliveryStatsServiceImpl extends StatsTemplate<DeliveryRecord, Staf
         return result;
     }
 
+    // date: [{name, quantity}]
+    // total: 123
+    protected Map<String, Integer> statsData(List<DeliveryRecord> data) {
+        return data.stream()
+                .collect(
+                        groupingBy(
+                                DeliveryRecord::getWatermanId,
+                                summingInt(DeliveryRecord::getQuantity)
+                        ));
+    }
+
     @Override
     protected Function<StaffStatsVO, Integer> summarizeFunction() {
         return StaffStatsVO::getQuantity;

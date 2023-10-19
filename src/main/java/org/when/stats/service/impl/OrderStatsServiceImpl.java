@@ -104,6 +104,16 @@ public class OrderStatsServiceImpl implements OrderStatsService {
                 .setTotalAmount(totalAmount);
     }
 
+    @Override
+    public List<SalesVO> bundleSalesStats() {
+        return statsBundleSalesBetween(LocalDateTime.of(LocalDate.MIN, LocalTime.MIN), LocalDateTime.now());
+    }
+
+    @Override
+    public List<SalesVO> productSalesStats() {
+        return statsProductSalesBetween(LocalDateTime.of(LocalDate.MIN, LocalTime.MIN), LocalDateTime.now());
+    }
+
     private List<YearMonth> getMonths(Year year) {
         List<YearMonth> months = new ArrayList<>();
         for (Month month : Month.values()) {
